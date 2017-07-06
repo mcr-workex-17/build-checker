@@ -1,0 +1,6 @@
+#build_announce
+https://hooks.slack.com/services/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
+#general
+https://hooks.slack.com/services/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
+#bot_testing
+https://hooks.slack.com/services/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
