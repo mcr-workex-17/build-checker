@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 def send_slack():
-    channels = open("/home/ben/Documents/config/channels.txt", "r")
+    channels = open("/config/channels.txt", "r")
     channelstxt = channels.readlines()
     url = {}
     for linenumber in range(0,len(channelstxt),2):
@@ -12,7 +12,7 @@ def send_slack():
         url[channelname] = channelurl
 
 
-    config = open("/home/ben/Documents/config/config.txt", "r")
+    config = open("/config/config.txt", "r")
     configtxt = config.readlines()
     bot_name = configtxt[1].strip()
     place = configtxt[3].strip()
