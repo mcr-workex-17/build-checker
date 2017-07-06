@@ -1,0 +1,8 @@
+this is a config file for bot line 2 is the bot name 
+Botty
+line 4 is the destination of the message
+#general
+this is the server that it gets it from
+https://builds.apache.org/
+
+
