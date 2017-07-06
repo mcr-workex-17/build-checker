@@ -1,6 +1,6 @@
 import json
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup 
 import time
 def send_slack():
     channels = open("/config/channels.txt", "r")
@@ -21,7 +21,7 @@ def send_slack():
     table = soup.find('table', {"id": "projectstatus"}).find_all("tr")[1::]
 
 
-    for n in table:
+    for n in table:      
         build_name = "Job Name: " + str(n.find("a", {"class": "model-link inside"}).text)
         status ="Success: " + str(n.find("img").get('alt', ''))
         timestamp = "Timestamp: " + str(n.find_all("td")[2].get('data',''))
