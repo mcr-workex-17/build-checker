@@ -2,8 +2,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 import time
-#creates a function called send_slack that sends to slack
-def send_slack():
+def get_data():
     #opens a config file that contains the channels bots URL and the chanel itself
     channels = open("config/channels.txt", "r")
     channelstxt = channels.readlines()
@@ -26,6 +25,10 @@ def send_slack():
         status ="Success: " + str(n.find("img").get('alt', ''))
         timestamp = "Timestamp: " + str(n.find_all("td")[2].get('data',''))
         #takes the neccessary data from the the dictionarys (lists for strings) 
+#creates a function called send_slack that sends to slack
+def send_slack():  
+        get_data():
+   
         webhook_url = url[place]
         #print url[place] # debugging
         slack_data = {
