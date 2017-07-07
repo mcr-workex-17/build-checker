@@ -5,7 +5,7 @@ import time
 #creates a function called send_slack that sends to slack
 def send_slack():
     #opens a config file that contains the channels bots URL and the chanel itself
-    channels = open("config/channels.txt", "r")
+    channels = open("slackbot/config/channels.txt", "r")
     channelstxt = channels.readlines()
     url = {}
     for linenumber in range(0,len(channelstxt),2):
