@@ -4,20 +4,15 @@ from bs4 import BeautifulSoup
 import time
 #creates a function called send_slack that sends to slack
 def send_slack():
-    #opens a config file that contains the channels bots URL and the chanel itself
-    channels = open("slackbot/config/channels.txt", "r")
-    channelstxt = channels.readlines()
-    url = {}
-    for linenumber in range(0,len(channelstxt),2):
-        channelname = channelstxt[linenumber].strip()
-        channelurl = channelstxt[linenumber+1].strip()
-        url[channelname] = channelurl
+    #opens a config file that contains the channels bots URL and the channel itself
+    with open("channels.txt", "r") as f:
+        url = json.load(f)
     #opens up a new config file that gives the bot name and instructions of where to send to and where to get the data from
-    config = open("config/config.txt", "r")
-    configtxt = config.readlines()
-    bot_name = configtxt[1].strip()
-    place = configtxt[3].strip()
-    page = requests.get(configtxt[5].strip()).text
+    with open("config.json", "r") as f:
+        config = json.load(f)
+    bot_name = config["botname"]
+    place = config["channel"]
+    page = requests.get(config["serverurl"]).text
     soup = BeautifulSoup(page, "lxml")
     table = soup.find('table', {"id": "projectstatus"}).find_all("tr")[1::]
     #fetches the data from a table from the sever specifyed in the config file
@@ -31,9 +26,9 @@ def send_slack():
         slack_data = {
                 "username": " " + bot_name,
                 "icon_emoji": ":robot_face:",
-                "text": "~~~~~~~~~~~~~~~~~~~~~~\n#*" + channelname + "* \nBuild =  " + build_name +"\nStatus = " + status + "\nTime =  "  + timestamp + " "
+                "text": "~~~~~~~~~~~~~~~~~~~~~~\n#*" + place + "* \nBuild =  " + build_name +"\nStatus = " + status + "\nTime =  "  + timestamp + " "
                         }
-        #these allows python to communicate with slack
+        #this allows python to communicate with slack
         response = requests.post(
             webhook_url, data=json.dumps(slack_data),
             headers={'Content-Type': 'application/json'}

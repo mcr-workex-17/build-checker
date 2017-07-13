@@ -1,4 +1,1 @@
-The file structure should be 
-    home/user/Documents/slackbot/config/config.txt
-    home/user/Documents/slackbot/config/channels.txt
-    home/user/Documents/slackbot/bot.py
+Bot can be configured to output data to select channels by inputing a channel's url into channels.txt and changing the selected channel output in config.json to the specified channel. 
