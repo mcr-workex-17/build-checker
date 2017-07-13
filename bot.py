@@ -17,9 +17,9 @@ def send_slack():
     table = soup.find('table', {"id": "projectstatus"}).find_all("tr")[1::]
     #fetches the data from a table from the sever specifyed in the config file
     for n in table:
-        build_name = "Job Name: " + str(n.find("a", {"class": "model-link inside"}).text)
-        status ="Success: " + str(n.find("img").get('alt', ''))
-        timestamp = "Timestamp: " + str(n.find_all("td")[2].get('data',''))
+        build_name = str(n.find("a", {"class": "model-link inside"}).text)
+        status = str(n.find("img").get('alt', ''))
+        timestamp = str(n.find_all("td")[2].get('data',''))
         #takes the neccessary data from the the dictionarys (lists for strings) 
         webhook_url = url[place]
         #print url[place] # debugging
