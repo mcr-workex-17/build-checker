@@ -6,7 +6,7 @@ build_name = []
 status = []
 timestamp = []
 
-with open("config/config.json", "r") as f:
+with open("config.json", "r") as f:
     config = json.load(f)
 page = requests.get(config["serverurl"]).text
 soup = BeautifulSoup(page, "lxml")

@@ -10,10 +10,10 @@ with open("last_build_data_log.json", "r") as f:
 #run the code for each build
 for i in range(0, len(build_data[0])): #HEREHERHERHEHREHRH FIX THIS
   #loads slack channel names and corresponding URLs
-  with open("config/channels.txt", "r") as f:
+  with open("channels.txt", "r") as f:
     url = json.load(f)
   #opens up a new config file that gives the bot name and instructions of where to send to and where to get the data from
-  with open("config/config.json", "r") as f:
+  with open("config.json", "r") as f:
       config = json.load(f)
   bot_name = config["botname"]
   place = config["channel"]
