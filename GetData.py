@@ -16,13 +16,6 @@ for n in table:
     build_name.append(str(n.find("a", {"class": "model-link inside"}).text))
     status.append(str(n.find("img").get('alt', '')))
     timestamp.append(str(n.find_all("td")[2].get('data','')))
-    #debugging:
-    print "Build Name:", build_name
-    print "Status:", status
-    print "Time:", timestamp, "\n"
-
-
 build_data = [build_name, status, timestamp]
-print build_data[0][0]
 with open("last_build_data_log.json", "w") as f:
     json.dump(build_data, f)

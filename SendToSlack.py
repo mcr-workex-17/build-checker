@@ -8,7 +8,7 @@ with open("last_build_data_log.json", "r") as f:
     build_data = json.load(f)
 
 #run the code for each build
-for i in range(0, len(build_data[0])): #HEREHERHERHEHREHRH FIX THIS
+for i in range(0, len(build_data[0])):
   #loads slack channel names and corresponding URLs
   with open("channels.txt", "r") as f:
     url = json.load(f)
